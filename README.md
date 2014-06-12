@@ -7,7 +7,7 @@ A simple phone book application for saving and viewing contacts.
 
 ## Technologies
 
-* C#,ASP.NET MVC 5<br/>
+* C#, ASP.NET MVC 5<br/>
 * EF 6 Code First<br/>
 * Auto Mapper<br/>
 
