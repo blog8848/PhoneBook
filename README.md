@@ -5,14 +5,13 @@ A simple phone book application for saving and viewing contacts.
 
 
 
-#### Technologies
+## Technologies
 
 * C#,ASP.NET MVC 5<br/>
 * EF 6 Code First<br/>
 * Auto Mapper<br/>
 
-Patterns and Practices
-----------------------
+## Patterns and Practices
 
 * Domain Driven Design(DDD)
 * Generic Repository Pattern
