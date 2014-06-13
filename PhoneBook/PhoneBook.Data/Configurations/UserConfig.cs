@@ -7,7 +7,7 @@ namespace PhoneBook.Data.Configurations
     {
         public UserConfig()
         {
-            HasMany(c => c.Contacts).WithOptional(u => u.User).Map(u => u.MapKey("UserId")).WillCascadeOnDelete();
+            HasMany(u => u.Contacts).WithOptional().HasForeignKey(u => u.UserId);
         }
     }
 }

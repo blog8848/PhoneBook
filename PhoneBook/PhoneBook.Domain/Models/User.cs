@@ -11,7 +11,7 @@ namespace PhoneBook.Domain.Models
         public User()
         {
             CreatedDate = DateTime.Now;
-           // Contacts = new List<Contact>();
+            Contacts = new List<Contact>();
         }
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -23,6 +23,6 @@ namespace PhoneBook.Domain.Models
         public DateTime CreatedDate { get; private set; }
         public DateTime? ModifiedDate { get; set; }
 
-        public virtual ICollection<Contact> Contacts { get; set; }
+        public ICollection<Contact> Contacts { get; set; }
     }
 }

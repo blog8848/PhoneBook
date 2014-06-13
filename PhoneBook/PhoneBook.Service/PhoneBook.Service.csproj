@@ -39,7 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneBook.Data\PhoneBook.Data.csproj">
+      <Project>{4fc7b65b-8429-46b5-9328-c3a910161fb5}</Project>
+      <Name>PhoneBook.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhoneBook.Domain\PhoneBook.Domain.csproj">
+      <Project>{a32a152c-f7df-41ad-a013-2b95a3347e08}</Project>
+      <Name>PhoneBook.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,7 +18,12 @@ namespace PhoneBook.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new UserConfig());
+            modelBuilder.Entity<User>();
+            // modelBuilder.Configurations.Add(new UserConfig());
+            //modelBuilder.Entity<User>().HasMany(u => u.Contacts).WithOptional(c => c.User);
+            //modelBuilder.Entity<User>().HasMany<Contact>(u => u.Contacts)
+            //.WithOptional(u => u.User).HasForeignKey(u => u.UserId);
+
         }
     }
 }

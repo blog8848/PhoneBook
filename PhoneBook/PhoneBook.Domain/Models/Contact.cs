@@ -9,6 +9,7 @@ namespace PhoneBook.Domain.Models
         public Contact()
         {
             CreatedDate = DateTime.Now;
+            ContactDetails = new List<ContactDetail>();
         }
 
         public int ContactId { get; set; }
@@ -24,6 +25,6 @@ namespace PhoneBook.Domain.Models
 
         public User User;
 
-        public virtual ICollection<ContactDetail> ContactDetails { get; set; }
+        public ICollection<ContactDetail> ContactDetails { get; set; }
     }
 }
