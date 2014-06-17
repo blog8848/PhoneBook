@@ -10,7 +10,6 @@ namespace PhoneBook.Data.Repositories
         {
             return _dbContext ?? (_dbContext = new PhoneBookDbContext());
         }
-
         public void Dispose()
         {
             throw new System.NotImplementedException();

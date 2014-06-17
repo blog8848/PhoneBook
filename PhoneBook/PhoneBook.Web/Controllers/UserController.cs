@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using AutoMapper;
 using PhoneBook.Domain.Models;
 using PhoneBook.Service.Contracts;
@@ -9,58 +10,39 @@ namespace PhoneBook.Web.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private readonly ICaptchaService _captchaService;
+        public UserController(IUserService userService, ICaptchaService captchaService)
         {
             _userService = userService;
+            _captchaService = captchaService;
         }
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
-        public ActionResult UserLogin()
+        public ActionResult CreateUser()
         {
-            return View("Index");
-        }
-        [HttpPost]
-        public ActionResult UserLogin(ApplicationUserViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Mapper.CreateMap<ApplicationUserViewModel, User>();
-                User user = Mapper.Map<User>(model);
-                bool isValidUser = _userService.Exists(user);
-                if (isValidUser)
-                {
-                    return RedirectToAction("Welcome", "Home");
-                }
-            }
-            return View("Index");
+            // _captchaService.CreateQuestion(new Captcha { Question = "2+2=?", Answer = "four", IsActive = true });
+            Captcha captcha = _captchaService.GenerateCaptcha();
+            Session["CaptchaQuestion"] = captcha.Question;
+            Session["CaptchaAnswer"] = captcha.Answer;
+            return View();
         }
 
         [HttpPost]
         public ActionResult CreateUser(UserViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+            string captchaAnswer = Session["CaptchaAnswer"] as string;
+            if (model.CaptchaAnswer.Equals(captchaAnswer))
             {
                 Mapper.CreateMap<UserViewModel, User>();
                 User user = Mapper.Map<User>(model);
                 //User user = Mapper.Map<UserViewModel, User>(model);
                 _userService.CreateUser(user);
-                return Content("Welcome user");
+                TempData["UserCreated"] = string.Concat(model.FirstName, ", your account has been created.");
+                TempData["UserName"] = model.UserName;
+                return RedirectToAction("CreateUser");
             }
-            return View("SignUp");
-        }
-
-        public ActionResult ForgotPassword()
-        {
-            return View("ForgotPassword");
-        }
-
-        public ActionResult SignUp()
-        {
-            return View("SignUp");
+            ModelState.AddModelError("invalidCaptcha", "Invalid answer.");
+            return View(model);
         }
     }
 }

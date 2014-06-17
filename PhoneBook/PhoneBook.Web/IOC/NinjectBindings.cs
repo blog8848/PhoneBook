@@ -13,6 +13,7 @@ namespace PhoneBook.Web.IOC
             Bind<IDatabaseFactory>().To<DatabaseFactory>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IUserService>().To<UserService>();
+            Bind<ICaptchaService>().To<CaptchaService>();
         }
     }
 }

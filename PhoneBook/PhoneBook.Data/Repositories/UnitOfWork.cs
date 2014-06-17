@@ -7,7 +7,7 @@ namespace PhoneBook.Data.Repositories
         private PhoneBookDbContext _dbContext;
         private readonly IDatabaseFactory _databaseFactory;
         private IUserRepository _userRepository;
-
+        private ICaptchaRepository _captchaRepository;
         public PhoneBookDbContext DbContext
         {
             get
@@ -29,6 +29,14 @@ namespace PhoneBook.Data.Repositories
             get
             {
                 return _userRepository ?? (_userRepository = new UserRepository(_databaseFactory));
+            }
+        }
+
+        public ICaptchaRepository CaptchaRepository
+        {
+            get
+            {
+                return _captchaRepository ?? (_captchaRepository = new CaptchaRepository(_databaseFactory));
             }
         }
     }

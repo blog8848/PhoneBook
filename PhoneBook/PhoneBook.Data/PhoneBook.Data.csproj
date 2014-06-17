@@ -48,14 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\CaptchaConfig.cs" />
     <Compile Include="Configurations\ContactConfig.cs" />
     <Compile Include="Configurations\UserConfig.cs" />
+    <Compile Include="Infrastructures\ICaptchaRepository.cs" />
     <Compile Include="Infrastructures\IDatabaseFactory.cs" />
     <Compile Include="Infrastructures\IRepository.cs" />
     <Compile Include="Infrastructures\IUnitOfWork.cs" />
     <Compile Include="Infrastructures\IUserRepository.cs" />
     <Compile Include="PhoneBookDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CaptchaRepository.cs" />
     <Compile Include="Repositories\DatabaseFactory.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />

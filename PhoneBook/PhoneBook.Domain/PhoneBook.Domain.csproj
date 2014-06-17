@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Captcha.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactDetail.cs" />
     <Compile Include="Models\User.cs" />

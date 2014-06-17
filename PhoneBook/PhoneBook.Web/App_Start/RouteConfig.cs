@@ -12,7 +12,7 @@ namespace PhoneBook.Web
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Login", action = "UserLogin", id = UrlParameter.Optional }
             );
         }
     }
