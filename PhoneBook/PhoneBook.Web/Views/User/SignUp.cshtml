@@ -1,0 +1,110 @@
+﻿@model PhoneBook.Web.ViewModels.UserViewModel
+@{
+    Layout = "~/Views/Shared/_LoginSignup.cshtml";
+}
+<div class="pbFormTitle">Enter your details create your account. </div>
+@using (@Html.BeginForm("CreateUser", "User"))
+{
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.FirstName, new { @class = "frmLabel" })
+            </td>
+            <td>
+                @Html.LabelFor(m => m.MiddleName, new { @class = "frmLabel" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "frmTextBox" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.MiddleName, new { @class = "frmTextBox" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.ValidationMessageFor(m => m.LastName)</td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.LastName, new { @class = "frmLabel" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.LastName, new { @class = "frmTextBox" })
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+            <td>@Html.ValidationMessageFor(m => m.Email)</td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.UserName, new { @class = "frmLabel" })
+            </td>
+            <td>
+                @Html.LabelFor(m => m.Email, new { @class = "frmLabel" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "frmTextBox" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Email, new { @class = "frmTextBox" })
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.ValidationMessageFor(m => m.Password)</td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Password, new { @class = "frmLabel" })
+            </td>
+            <td>
+                @Html.Label("Reenter Password")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.PasswordFor(m => m.Password, new { @class = "frmTextBox" })
+                <p class="hint">Minimum 8 characters.</p>
+
+            </td>
+            <td>
+                @Html.TextBox("ReenterPassword")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Prove that you are not a robot.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2 + 2 = ?
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("Captcha")
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Create" /></td>
+        </tr>
+    </table>
+}
