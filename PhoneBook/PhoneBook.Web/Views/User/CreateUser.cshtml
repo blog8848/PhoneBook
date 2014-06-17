@@ -19,7 +19,10 @@
                 <td colspan="2">
                     <p class="hint">
                         @successMsg
-                        @Html.ActionLink("Login Now?", "UserLogin", "Login", new { user = @userName }, null)
+                        @if (!string.IsNullOrEmpty(userName))
+                        {
+                            @Html.ActionLink("Login Now?", "UserLogin", "Login", new { user = @userName }, null)
+                        }
                     </p>
                 </td>
             </tr>

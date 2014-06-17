@@ -23,10 +23,13 @@ namespace PhoneBook.Service.Services
             return _unitOfWork.UserRepository.GetAll();
         }
 
-        public void CreateUser(User user)
+        public int CreateUser(User user)
         {
+            bool userExists = _unitOfWork.UserRepository.Exists(u => u.UserName == user.UserName);
+            if (userExists) return 0;
             _unitOfWork.UserRepository.Insert(user);
             _unitOfWork.Commit();
+            return user.UserId;
         }
 
         public void UpdateUser(User user)

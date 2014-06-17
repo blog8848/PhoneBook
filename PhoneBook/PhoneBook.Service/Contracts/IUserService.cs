@@ -22,7 +22,7 @@ namespace PhoneBook.Service.Contracts
         /// Creates new user. 
         /// </summary>
         /// <param name="user">User object.</param>
-        void CreateUser(User user);
+        int CreateUser(User user);
 
         /// <summary>
         /// Updates user's information.
@@ -44,7 +44,7 @@ namespace PhoneBook.Service.Contracts
         /// <returns>true or false.</returns>
         bool Exists(User user);
 
-       
+
 
     }
 }

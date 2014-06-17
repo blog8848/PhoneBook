@@ -36,10 +36,15 @@ namespace PhoneBook.Web.Controllers
                 Mapper.CreateMap<UserViewModel, User>();
                 User user = Mapper.Map<User>(model);
                 //User user = Mapper.Map<UserViewModel, User>(model);
-                _userService.CreateUser(user);
-                TempData["UserCreated"] = string.Concat(model.FirstName, ", your account has been created.");
-                TempData["UserName"] = model.UserName;
-                return RedirectToAction("CreateUser");
+                int userId = _userService.CreateUser(user);
+                if (userId > 0)
+                {
+                    TempData["UserCreated"] = string.Concat(model.FirstName, ", your account has been created.");
+                    TempData["UserName"] = model.UserName;
+                    return RedirectToAction("CreateUser");
+                }
+                TempData["UserCreated"] = string.Concat("User name ", model.UserName, " is not available.Please try other username.");
+                return View();
             }
             ModelState.AddModelError("invalidCaptcha", "Invalid answer.");
             return View(model);
