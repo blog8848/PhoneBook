@@ -12,9 +12,8 @@ namespace PhoneBook.Web.Controllers
         {
             _userService = userService;
         }
-        //
-        // GET: /Home/
 
+        #region Create Contact
         public string Index()
         {
             User user = new User
@@ -43,8 +42,9 @@ namespace PhoneBook.Web.Controllers
             return "New User Created";
 
         }
+        #endregion
 
-        public ViewResult Welcome()
+        public ViewResult DashBoard()
         {
             return View();
         }

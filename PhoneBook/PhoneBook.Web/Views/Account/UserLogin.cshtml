@@ -11,12 +11,16 @@
     }
 }
 <div class="pbFormTitle">Login to your Phonebook.</div>
-@using (@Html.BeginForm("UserLogin", "User"))
+@using (@Html.BeginForm("UserLogin", "Account"))
 {
     <table>
         <tr>
             <td>
                 @Html.ValidationMessageFor(m => m.UserName)
+                @if (ViewData.ModelState.ContainsKey("InvalidLogin"))
+                {
+                    @Html.ValidationMessage("InvalidLogin")
+                }
             </td>
         </tr>
         <tr>
@@ -51,12 +55,12 @@
         </tr>
         <tr>
             <td>
-                @Html.ActionLink("Forgot Password?", "ForgotPassword", "ForgotPassword")
+                @Html.ActionLink("Forgot Password?", "ForgotPassword", "Account")
             </td>
         </tr>
         <tr>
             <td>
-                Don't have account.@Html.ActionLink("Sign Up?", "CreateUser", "User")
+                Don't have account.@Html.ActionLink("Sign Up?", "CreateUser", "Account")
             </td>
         </tr>
     </table>

@@ -9,7 +9,7 @@
 }
 
 <div class="pbFormTitle">Enter your details create your account. </div>
-@using (@Html.BeginForm("CreateUser", "User"))
+@using (@Html.BeginForm("CreateUser", "Account"))
 {
     @Html.ValidationSummary(true)
     <table>
@@ -21,17 +21,15 @@
                         @successMsg
                         @if (!string.IsNullOrEmpty(userName))
                         {
-                            @Html.ActionLink("Login Now?", "UserLogin", "Login", new { user = @userName }, null)
+                            @Html.ActionLink("Login Now?", "UserLogin", "Account", new { user = @userName }, null)
                         }
                     </p>
                 </td>
             </tr>
         }
-
         <tr>
             <td>@Html.ValidationMessageFor(m => m.FirstName)</td>
         </tr>
-
         <tr>
             <td>
                 @Html.LabelFor(m => m.FirstName, new { @class = "frmLabel" })
@@ -51,7 +49,6 @@
         <tr>
             <td>@Html.ValidationMessageFor(m => m.LastName)</td>
         </tr>
-
         <tr>
             <td>
                 @Html.LabelFor(m => m.LastName, new { @class = "frmLabel" })
@@ -104,7 +101,7 @@
             <td>
                 @Html.TextBoxFor(m => m.Password, new { @class = "frmTextBox" })
                 <p class="hint">Minimum 8 characters.</p>
-                <p class="hint">1 special character 1 upper case character.</p>
+                <p class="hint">1 special character 1 number.</p>
 
             </td>
             <td>

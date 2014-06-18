@@ -1,13 +1,97 @@
-﻿<!DOCTYPE html>
+﻿@using PhoneBook.Web.Helpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link href="~/Contents/Styles/base.css" rel="stylesheet" />
+    <link href="~/Contents/Styles/style.css" rel="stylesheet" />
+    <style>
+        #pbDashBoardWrapper {
+            width: 100%;
+            min-height: 600px;
+        }
+        .pbDashBoardTitle {
+            margin-left: 15%;
+            margin-right: 10%;
+            width: 75%;
+            height: 30px;
+        }
+        .pbDashBoardFilter {
+            margin-left: 15%;
+            margin-right: 10%;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            width: 75%;
+            height: 30px;
+        }
 
-</head>
-    <body>
+            .pbDashBoardFilter > div {
+                display: inline-block;
+            }
+
         
+
+        #pbContactList {
+            margin-left: 15%;
+            margin-right: 10%;
+            width: 75%;
+            position: absolute;
+        }
+
+        .pbContactName {
+            font-weight: bold;
+        }
+
+        .pbContact {
+            width: 23%;
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 15px;
+            background-color: #0072C6;
+        }
+
+            .pbContact > div {
+                padding: 5px 10px;
+                color: white;
+            }
+
+            .pbContact > img {
+                margin-left: 20%;
+                padding: 10px;
+                width: 50%;
+                height: 50%;
+            }
+    </style>
+</head>
+<body>
+    <div id="pbDashBoardWrapper">
+        <div class="pbDashBoardTitle">
+            <div style="float: left;">
+                <h1> Welcome! @PhoneBookSessionManager.LoggedInUserName </h1>
+            </div>
+            <div style="float: right;">
+                <img src="~/Contents/Images/settings.png" title="Settings" />
+            </div>
+
+        </div>
+        <div style="clear: both;"></div>
+        <div class="pbDashBoardFilter">
+            <div class="pbLeft" style="width: 33%;">
+                Sort By:
+                <select>
+                    <option>First Name</option>
+                    <option>Last Name</option>
+                    <option>Address</option>
+                </select>
+            </div>
+            <div class="pbLeft" style="width: 33%;">
+                <input type="button" value="+ Add New Contact" />
+            </div>
+            <div class="pbRight" ><input type="text" placeholder="Search Contact" /></div>
+        </div>
         @RenderBody()
-    </body>
+    </div>
+</body>
 </html>
