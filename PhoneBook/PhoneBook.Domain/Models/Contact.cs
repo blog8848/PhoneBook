@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace PhoneBook.Domain.Models
@@ -20,11 +19,8 @@ namespace PhoneBook.Domain.Models
         public string Address { get; set; }
         public string HomePhone { get; set; }
         public string MobilePhone { get; set; }
-
         public DateTime CreatedDate { get; private set; }
-
         public User User;
-
         public ICollection<ContactDetail> ContactDetails { get; set; }
     }
 }
