@@ -14,6 +14,7 @@ namespace PhoneBook.Web.IOC
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<IUserService>().To<UserService>();
             Bind<ICaptchaService>().To<CaptchaService>();
+            Bind<IContactService>().To<ContactService>();
         }
     }
 }

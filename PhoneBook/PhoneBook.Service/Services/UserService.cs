@@ -44,9 +44,10 @@ namespace PhoneBook.Service.Services
             _unitOfWork.UserRepository.Delete(SelectUserById(userId));
         }
 
-        public bool Exists(User user)
+        public User Exists(User user)
         {
-            return _unitOfWork.UserRepository.Exists(u => u.UserName == user.UserName && u.Password == user.Password);
+            bool validUser = _unitOfWork.UserRepository.Exists(u => u.UserName == user.UserName && u.Password == user.Password);
+            return validUser ? _unitOfWork.UserRepository.GetUserFromUserName(u => u.UserName == user.UserName) : null;
         }
     }
 }

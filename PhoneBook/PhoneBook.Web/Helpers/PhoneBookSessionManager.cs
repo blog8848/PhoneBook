@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 
 namespace PhoneBook.Web.Helpers
 {
@@ -7,11 +8,11 @@ namespace PhoneBook.Web.Helpers
         private const string LoggedInUserNameSession = "LoggedInUserName";
         private const string LoggedInUserIdSession = "LoggedInUserId";
 
-        public static string LoggedInUserId
+        public static int LoggedInUserId
         {
             get
             {
-                return HttpContext.Current.Session[LoggedInUserIdSession] as string;
+                return Convert.ToInt32(HttpContext.Current.Session[LoggedInUserIdSession]);
             }
             set
             {

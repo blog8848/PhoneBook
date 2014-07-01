@@ -53,7 +53,7 @@ namespace PhoneBook.Data.Repositories
         {
             _dbSet.Remove(entity);
         }
-        public bool Exists(Expression<Func<T, bool>> where)
+        public virtual bool Exists(Expression<Func<T, bool>> where)
         {
             return _dbSet.Where(where).Any();
         }

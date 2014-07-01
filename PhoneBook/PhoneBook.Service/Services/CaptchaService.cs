@@ -17,26 +17,26 @@ namespace PhoneBook.Service.Services
             _unitOfWork.CaptchaRepository.Insert(captcha);
             _unitOfWork.Commit();
         }
-        public Captcha SelectCaptchaById(int captchaId)
-        {
-            return _unitOfWork.CaptchaRepository.Single(captchaId);
-        }
+        //public Captcha SelectCaptchaById(int captchaId)
+        //{
+        //    return _unitOfWork.CaptchaRepository.Single(captchaId);
+        //}
 
-        public int GetMinimumQuestionId()
-        {
-            return _unitOfWork.CaptchaRepository.MinCaptchaId();
-        }
+        //public int GetMinimumQuestionId()
+        //{
+        //    return _unitOfWork.CaptchaRepository.MinCaptchaId();
+        //}
 
-        public int GetMaximumQuestionId()
-        {
-            return _unitOfWork.CaptchaRepository.MaxCaptchaId();
-        }
+        //public int GetMaximumQuestionId()
+        //{
+        //    return _unitOfWork.CaptchaRepository.MaxCaptchaId();
+        //}
 
         public Captcha GenerateCaptcha()
         {
             Random randomCaptchaId = new Random();
-            int captchaId = randomCaptchaId.Next(GetMinimumQuestionId(), GetMaximumQuestionId() + 1);
-            return SelectCaptchaById(captchaId);
+            int captchaId = randomCaptchaId.Next(_unitOfWork.CaptchaRepository.MinCaptchaId(), _unitOfWork.CaptchaRepository.MaxCaptchaId() + 1);
+            return _unitOfWork.CaptchaRepository.Single(captchaId);
         }
     }
 }

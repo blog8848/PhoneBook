@@ -6,11 +6,10 @@ namespace PhoneBook.Data.Repositories
 {
     public class CaptchaRepository : GenericRepository<Captcha>, ICaptchaRepository
     {
-        private readonly IDatabaseFactory _databaseFactory;
         public CaptchaRepository(IDatabaseFactory databaseFactory)
             : base(databaseFactory)
         {
-            _databaseFactory = databaseFactory;
+
         }
         public int MinCaptchaId()
         {

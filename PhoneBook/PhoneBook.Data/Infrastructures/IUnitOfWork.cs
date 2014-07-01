@@ -5,6 +5,7 @@ namespace PhoneBook.Data.Infrastructures
     {
         IUserRepository UserRepository { get; }
         ICaptchaRepository CaptchaRepository { get; }
+        IContactRepository ContactRepository { get; }
         void Commit();
     }
 }

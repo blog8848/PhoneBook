@@ -8,6 +8,7 @@ namespace PhoneBook.Data.Repositories
         private readonly IDatabaseFactory _databaseFactory;
         private IUserRepository _userRepository;
         private ICaptchaRepository _captchaRepository;
+        private IContactRepository _contactRepository;
         public PhoneBookDbContext DbContext
         {
             get
@@ -38,6 +39,12 @@ namespace PhoneBook.Data.Repositories
             {
                 return _captchaRepository ?? (_captchaRepository = new CaptchaRepository(_databaseFactory));
             }
+        }
+
+
+        public IContactRepository ContactRepository
+        {
+            get { return _contactRepository ?? (_contactRepository = new ContactRepository(_databaseFactory)); }
         }
     }
 }

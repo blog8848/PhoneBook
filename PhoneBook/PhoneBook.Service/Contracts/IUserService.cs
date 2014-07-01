@@ -42,7 +42,7 @@ namespace PhoneBook.Service.Contracts
         /// </summary>
         /// <param name="user">User object.</param>
         /// <returns>true or false.</returns>
-        bool Exists(User user);
+        User Exists(User user);
 
 
 

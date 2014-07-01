@@ -5,10 +5,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <link href="~/Contents/Styles/reset.css" rel="stylesheet" />
     <link href="~/Contents/Styles/base.css" rel="stylesheet" />
     <link href="~/Contents/Styles/style.css" rel="stylesheet" />
-    <script src="~/Contents/Scripts/jquery-1.8.2.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="~/Contents/Scripts/PbPopup.js"></script>
+    <link href="~/Contents/ModalBox/ModalBox.css" rel="stylesheet" />
     <style>
         #pbDashBoardWrapper {
             width: 100%;
@@ -16,11 +20,21 @@
         }
 
         .pbDashBoardTitle {
+            width: 100%;
+            background-color: #0072c6;
+            height: 50px;
+        }
+
+        .pbDashBoardTitleContent {
             margin-left: 15%;
             margin-right: 10%;
             width: 75%;
-            height: 30px;
+            padding: 10px 0;
         }
+
+            .pbDashBoardTitleContent > div > h1 {
+                color: #ffffff !important;
+            }
 
         .pbDashBoardFilter {
             margin-left: 15%;
@@ -35,13 +49,14 @@
                 display: inline-block;
             }
 
-
-
         #pbContactList {
             margin-left: 15%;
             margin-right: 10%;
             width: 75%;
             position: absolute;
+            height: 500px;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .pbContactName {
@@ -68,51 +83,12 @@
                 height: 50%;
             }
 
-        .pbPopupWrapper {
-            position: fixed;
-            left: 50%;
-            display: none;
-            z-index: 102;
-        }
-
-        .pbPopup {
-            position: relative;
-            left: -50%;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-
-        #popUpMask {
-            position: fixed;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: #000000;
-            opacity: .2;
-            filter: alpha(opacity=15);
-            -moz-opacity: .15;
-            z-index: 100;
-            display: none;
-        }
 
         .pbTable {
             display: table;
             padding: 10px;
         }
 
-        .pbPopupTitle {
-            font-weight: bold;
-            background-color: #0061A8;
-            color: #ffffff;
-            padding: 5px;
-        }
 
         .pbTableHeading {
             display: table-row;
@@ -129,24 +105,21 @@
             padding: 5px 10px;
         }
 
-        .pbPopUpClose {
-            background: url("../Contents/Images/close.png") no-repeat;
-            width: 16px;
-            height: 16px;
-        }
-        .pbPopUpClose:hover {
-            opacity: 0.7;
+        .validation-summary-valid {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div id="pbDashBoardWrapper">
         <div class="pbDashBoardTitle">
-            <div style="float: left;">
-                <h1> Welcome! @PhoneBookSessionManager.LoggedInUserName </h1>
-            </div>
-            <div style="float: right;">
-                <img src="~/Contents/Images/settings.png" title="Settings" />
+            <div class="pbDashBoardTitleContent">
+                <div style="float: left;">
+                    <h1> Welcome! @PhoneBookSessionManager.LoggedInUserName </h1>
+                </div>
+                <div style="float: right;">
+                    <a href="#"><img src="~/Contents/Images/settings.png" title="Settings" alt="Settings" /></a>
+                </div>
             </div>
         </div>
         <div style="clear: both;"></div>

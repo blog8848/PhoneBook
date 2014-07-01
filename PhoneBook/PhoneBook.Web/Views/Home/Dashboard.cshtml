@@ -3,7 +3,7 @@
 }
 @model PhoneBook.Web.ViewModels.ContactViewModel
 <div id="pbContactList">
-    @for (int i = 0; i < 8; i++)
+    @for (int i = 0; i < 10; i++)
     {
         <div class="pbContact">
             <img src="" />
@@ -14,115 +14,16 @@
         </div>
     }
 </div>
-<div id="popUpMask"></div>
-<div class="pbPopupWrapper">
-    <div class="pbPopup" style="height: 360px;">
-        <div class="pbPopupTitle">
-            Create New Contact
-            <a href="#" style="float: right;" class="pbPopUpClose"></a>
-        </div>
-        @using (@Html.BeginForm())
-        {
-            <div class="pbTable" style="margin-top: 10px;">
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.FirstName)
-                    </div>
-                    <div class="pbTableCell">
-                        @Html.EditorFor(m => m.FirstName)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.MiddleName)
-                    </div>
-                    <div class="pbTableCell">
-                        @Html.EditorFor(m => m.MiddleName)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.LastName)
-                    </div> <div class="pbTableCell">
-                        @Html.EditorFor(m => m.LastName)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.HomePhone)
-                    </div> <div class="pbTableCell">
-                        @Html.EditorFor(m => m.HomePhone)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.MobilePhone)
-                    </div> <div class="pbTableCell">
-                        @Html.EditorFor(m => m.MobilePhone)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell">
-                        @Html.LabelFor(m => m.Address)
-                    </div>
-                    <div class="pbTableCell">
-                        @Html.EditorFor(m => m.Address)
-                    </div>
-                </div>
-                <div class="pbTableRow">
-                    <div class="pbTableCell"></div>
-                    <div class="pbTableCell">
-                        <input type="submit" value="CreateContact" />
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
+
 <script>
-    $('#pbBtnNewContact').click(function () {
-        //document.body.style.overflow = "hidden";
-        $("#popUpMask").show();
-        $("#popUpMask").unbind("click");
-        $('.pbPopupWrapper').show();
-    });
-    $('.pbPopUpClose').click(function () {
-        $("#popUpMask").hide();
-        $('.pbPopupWrapper').hide();
-        //document.body.style.overflow = "visible";
+    $(document).ready(function () {
+        $('#pbBtnNewContact').click(function () {
+            $.modalBox({
+                url: "/Home/CreateNewContact",
+                height: "300px",
+                width: "450px",
+                draggable: true,
+            });
+        });
     });
 </script>
-
-@*@using (@Html.BeginForm())
-    {
-        <table>
-            <tr><td colspan="2">Add new contact.</td></tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.FirstName)</td>
-                <td>@Html.EditorFor(m => m.FirstName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.MiddleName)</td>
-                <td>@Html.EditorFor(m => m.MiddleName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.LastName)</td>
-                <td>@Html.EditorFor(m => m.LastName)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.HomePhone)</td>
-                <td>@Html.EditorFor(m => m.HomePhone)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.MobilePhone)</td>
-                <td>@Html.EditorFor(m => m.MobilePhone)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(m => m.Address)</td>
-                <td>@Html.EditorFor(m => m.Address)</td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="CreateContact" /></td>
-            </tr>
-        </table>
-    }*@

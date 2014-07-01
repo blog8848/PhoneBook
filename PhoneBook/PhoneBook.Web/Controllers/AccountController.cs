@@ -74,10 +74,11 @@ namespace PhoneBook.Web.Controllers
             if (!ModelState.IsValid) return View();
             Mapper.CreateMap<ApplicationUserViewModel, User>();
             User user = Mapper.Map<User>(model);
-            bool isValidUser = _userService.Exists(user);
-            if (isValidUser)
+            user = _userService.Exists(user);
+            if (user != null)
             {
-                PhoneBookSessionManager.LoggedInUserName = model.UserName;
+                PhoneBookSessionManager.LoggedInUserName = user.UserName;
+                PhoneBookSessionManager.LoggedInUserId = user.UserId;
                 return RedirectToAction("DashBoard", "Home");
             }
             ModelState.AddModelError("InvalidLogin", "Invalid username/password combination.");
